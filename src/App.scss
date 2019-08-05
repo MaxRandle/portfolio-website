@@ -12,18 +12,19 @@ body {
 
 .name {
 	font-family: "Varela", sans-serif;
-	font-size: 9rem;
+	font-size: 9em;
+	line-height: 1.2em;
 	&.first {
 		.ma {
 		}
 		.x {
-			font-size: 12rem;
+			font-size: 2em;
 			font-weight: bold;
 		}
 	}
 	&.last {
 		.r {
-			font-size: 12rem;
+			font-size: 2em;
 			font-weight: bold;
 		}
 		.andle {

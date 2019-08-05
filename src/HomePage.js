@@ -27,7 +27,7 @@ const HomePage = () => {
 	const classes = useStyles();
 	return (
 		<Box>
-			<Grid container direction="row" justify="center" alignItems="center" className="name first">
+			<Grid container direction="row" justify="flex-start" alignItems="center" className="name first">
 				<Grid item className="ma">
 					MA
 				</Grid>
@@ -36,7 +36,7 @@ const HomePage = () => {
 				</Grid>
 			</Grid>
 
-			<Grid container direction="row" justify="center" alignItems="center" className="name last">
+			<Grid container direction="row" justify="flex-start" alignItems="center" className="name last">
 				<Grid item className="r">
 					R
 				</Grid>
