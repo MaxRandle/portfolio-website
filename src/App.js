@@ -3,11 +3,11 @@ import "./App.scss";
 import HomePage from "./HomePage";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
+//import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(2)
   }
 }));
 

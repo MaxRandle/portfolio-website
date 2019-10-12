@@ -1,33 +1,39 @@
 body {
-	// background-color: #363636;
-	background-image: url("x-background.png");
-	background-repeat: repeat;
-	background-size: 400px;
-	margin: 0;
-	padding: 0;
-	color: white;
-	// height: 100%;
-	// display: flex;
+  // background-color: #363636;
+  //   background tiles
+  background-image: url("x-background.png");
+  background-repeat: repeat;
+  color: white;
+  background-size: 400px;
+
+  margin: 0;
+  padding: 0;
+  // height: 100%;
+  // display: flex;
 }
 
-.name {
-	font-family: "Varela", sans-serif;
-	font-size: 9em;
-	line-height: 1.2em;
-	&.first {
-		.ma {
-		}
-		.x {
-			font-size: 2em;
-			font-weight: bold;
-		}
-	}
-	&.last {
-		.r {
-			font-size: 2em;
-			font-weight: bold;
-		}
-		.andle {
-		}
-	}
+// .name {
+//   font-family: "Varela", sans-serif;
+//   font-size: 9em;
+//   line-height: 1.2em;
+//   &.first {
+//     .ma {
+//     }
+//     .x {
+//       font-size: 2em;
+//       font-weight: bold;
+//     }
+//   }
+//   &.last {
+//     .r {
+//       font-size: 2em;
+//       font-weight: bold;
+//     }
+//     .andle {
+//     }
+//   }
+// }
+
+.avatar {
+  border-radius: 50%;
 }

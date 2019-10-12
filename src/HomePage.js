@@ -1,66 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import react_logo from "./react-logo.svg";
 import material_ui_logo from "./material-ui-logo.svg";
 import github_logo from "./github-square-brands.svg";
 import linkedin_logo from "./linkedin-brands.svg";
+import max_randle_avatar from "./portrate-max-randle.jpg";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import { textAlign } from "@material-ui/system";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles(theme => ({
-  gridContainer: {
-    //padding: theme.spacing(3)
-  },
   logo: {
-    height: 80,
-    paddingBottom: theme.spacing(4)
+    height: 80
   },
-  gridItem: {
-    padding: theme.spacing(4),
+  nameTitle: {
+    textAlign: "center"
+    // lineHeight: "100%"
+  },
+  bio: {
     textAlign: "center"
   },
   block: {
-    padding: theme.spacing(4)
+    margin: theme.spacing(3)
+  },
+  avatar: {
+    borderRadius: "50%",
+    height: "18em"
+  },
+  divider: {
+    backgroundColor: "white"
   }
 }));
 
-const HomePage = () => {
+const HomePage = props => {
   const classes = useStyles();
   return (
     <Box>
       <Container className={classes.block}>
-        <Grid container direction="row" justify="flex-start" alignItems="center" className="name first">
-          <Grid item className="ma">
-            MA
-          </Grid>
-          <Grid item className="x">
-            X
-          </Grid>
-        </Grid>
+        <Typography className={classes.nameTitle} variant="h1">
+          Max Randle
+        </Typography>
+      </Container>
 
-        <Grid container direction="row" justify="flex-start" alignItems="center" className="name last">
-          <Grid item className="r">
-            R
-          </Grid>
-          <Grid item className="andle">
-            ANDLE
+      <Container className={classes.block}>
+        <Typography className={classes.bio}>
+          I am a talented software developer with a diverse skillset and professional experience in front-end
+          programming, back-end programming, and software automation. Blaah Blaah Blaah hard sell hard sell HARD SELL
+          HARD AS FUCK SELL.
+        </Typography>
+      </Container>
+
+      <Container className={classes.block}>
+        <Grid container direction="row" justify="center" alignItems="center" spacing={6}>
+          <Grid item>
+            <img className={classes.avatar} src={max_randle_avatar} alt="linkedin logo" />
           </Grid>
         </Grid>
       </Container>
 
       <Container className={classes.block}>
-        <Grid container direction="row" justify="flex-start" alignItems="center" spacing={6}>
-          <Grid item className="r">
+        <Grid container direction="row" justify="center" alignItems="center" spacing={6}>
+          <Grid item>
             <a href="https://github.com/MaxRandle" target="_blank">
               <img className={classes.logo} src={github_logo} alt="github logo" />
             </a>
           </Grid>
-          <Grid item className="r">
+          <Grid item>
             <a href="https://www.linkedin.com/in/max-randle-a79760160/" target="_blank">
               <img className={classes.logo} src={linkedin_logo} alt="linkedin logo" />
             </a>
+          </Grid>
+        </Grid>
+      </Container>
+
+      <Container className={classes.block}>
+        <Divider className={classes.divider} variant="middle" />
+      </Container>
+
+      <Container className={classes.block}>
+        <Grid container irection="row" justify="center" alignItems="center" spacing={6}>
+          <Grid item>
+            <Typography>Projects</Typography>
+          </Grid>
+          <Grid item>
+            <Typography>Skills</Typography>
+          </Grid>
+          <Grid item>
+            <Typography>Experience</Typography>
           </Grid>
         </Grid>
       </Container>
@@ -69,16 +98,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-{
-  /* <Grid container justify="center" alignItems="center" className={classes.gridContainer}>
-	<Grid item className={classes.gridItem} sm={6} xs={12}>
-		<img className={classes.logo} src={react_logo} alt="react logo" />
-		<Typography variant="h3">React</Typography>
-	</Grid>
-	<Grid item className={classes.gridItem} sm={6} xs={12}>
-		<img className={classes.logo} src={material_ui_logo} alt="material-ui logo" />
-		<Typography variant="h3">Material-ui</Typography>
-	</Grid>
-</Grid>; */
-}
