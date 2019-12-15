@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.scss";
 import HomePage from "./HomePage";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
