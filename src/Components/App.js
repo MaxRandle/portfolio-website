@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import HomePage from "./HomePage";
-import Container from "@material-ui/core/Container";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import HomePage from "./HomePage";
+import ProjectPage from "./ProjectPage";
+
 //import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(theme => ({
@@ -12,14 +15,29 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const classes = useStyles();
-  const [pageIndex, setPageIndex] = useState(0);
-  const page = [<HomePage />][pageIndex];
 
   return (
     <div className="App">
-      <Container className={classes.pageContainer} maxWidth="md">
-        {page}
-      </Container>
+      <Router>
+        <Route
+          path="/"
+          component={() => (
+            <Container className={classes.pageContainer} maxWidth="sm">
+              <HomePage />
+            </Container>
+          )}
+          exact
+        />
+        <Route
+          path="/projects"
+          component={() => (
+            <Container className={classes.pageContainer} maxWidth="md">
+              <ProjectPage />
+            </Container>
+          )}
+          exact
+        />
+      </Router>
     </div>
   );
 }
