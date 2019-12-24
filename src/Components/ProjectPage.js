@@ -1,56 +1,30 @@
 import React, { useState } from "react";
-import { Container, Typography, Grid, Divider, Link, Card, CardHeader, CardContent } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
-  iframe: {
-    width: "800px",
-    height: "400px"
-  },
-  center: {
-    textAlign: "center"
-  }
-}));
+import { Paper, Tabs, Tab, Grid } from "@material-ui/core";
+import JSProjects from "./JSProjects";
 
 const ProjectsPage = props => {
-  const classes = useStyles();
+  const [val, setVal] = useState(0);
+  const project = [<JSProjects />, <></>, <></>];
+
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
       <Grid item>
-        <Card>
-          <CardHeader title="Rain" />
-          <CardContent className={classes.center}>
-            <iframe className={classes.iframe} src="https://editor.p5js.org/MaxRandle/embed/_xTtmD_Wx" />
-          </CardContent>
-        </Card>
+        <Paper>
+          <Tabs
+            value={val}
+            indicatorColor="primary"
+            // textColor="primary"
+            onChange={(event, newVal) => setVal(newVal)}
+            aria-label="disabled tabs example"
+          >
+            <Tab label="JavaScript" />
+            <Tab label="AI" />
+            <Tab label="Machine Learning" />
+          </Tabs>
+        </Paper>
       </Grid>
 
-      <Grid item>
-        <Card>
-          <CardHeader title="Maze" />
-          <CardContent className={classes.center}>
-            <iframe className={classes.iframe} src="https://editor.p5js.org/MaxRandle/embed/oRiUyH7mG" />
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item>
-        <Card>
-          <CardHeader title="Fawkes" />
-          <CardContent className={classes.center}>
-            <iframe className={classes.iframe} src="https://editor.p5js.org/MaxRandle/embed/c2_q18g76" />
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item>
-        <Card>
-          <CardHeader title="Starfield" />
-          <CardContent className={classes.center}>
-            <iframe className={classes.iframe} src="https://editor.p5js.org/MaxRandle/embed/Qejijupwg" />
-          </CardContent>
-        </Card>
-      </Grid>
+      <Grid item>{project[val]}</Grid>
     </Grid>
   );
 };

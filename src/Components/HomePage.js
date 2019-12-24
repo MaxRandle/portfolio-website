@@ -19,9 +19,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "50%",
     height: "18em"
   },
-  white: {
-    // backgroundColor: "white"
-  },
   title: {
     lineHeight: "75px"
   }
@@ -41,9 +38,10 @@ const HomePage = props => {
 
       <Grid item>
         <Typography className={classes.center}>
-          I am a talented software developer with a diverse skillset and professional experience in front-end
-          programming, back-end programming, and software automation. Blaah Blaah Blaah hard sell hard sell HARD SELL
-          HARD AS FUCK SELL.
+          I am a talented software developer with a diverse skillset. I have professional experience in front-end web
+          development and software automation, but i come from a much broader background which when coupled with an
+          innate curiosity and desire to learn, has lead me to take on projects in other fields such as AI, machine
+          learning, and API development.
         </Typography>
       </Grid>
 
@@ -74,17 +72,23 @@ const HomePage = props => {
         <Grid container direction="row" justify="space-evenly" alignItems="center">
           <Grid item>
             <Typography>
-              <Link href="/projects">Projects</Link>
+              <Link href="/projects" color="inherit">
+                Projects
+              </Link>
             </Typography>
           </Grid>
           <Grid item>
             <Typography>
-              <Link href="/skills">Skills</Link>
+              <Link href="/skills" color="inherit">
+                Skills
+              </Link>
             </Typography>
           </Grid>
           <Grid item>
             <Typography>
-              <Link href="/experience">Experience</Link>
+              <Link href="/experience" color="inherit">
+                Experience
+              </Link>
             </Typography>
           </Grid>
         </Grid>
