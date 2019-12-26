@@ -14,12 +14,12 @@ const ProjectsPage = props => {
           <Tabs
             value={val}
             // indicatorColor="primary"
-            // textColor="primary"
+            textColor="primary"
             onChange={(event, newVal) => setVal(newVal)}
             aria-label="disabled tabs example"
           >
             <Tab label="P5.js" />
-            <Tab label="Machine Learning" />
+            <Tab label="ML" />
             <Tab label="AI" />
           </Tabs>
         </Paper>

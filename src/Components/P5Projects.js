@@ -18,14 +18,10 @@ const Page = props => {
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
       <Grid item>
-        <Card>
-          <CardContent>
-            <Typography>
-              Some of my first ever JavaScript projects, built while I was still studying. These projects were built
-              using the P5.js library and following tutorials by Coding Train - Daniel Shiffman
-            </Typography>
-          </CardContent>
-        </Card>
+        <Typography>
+          Some of my first ever JavaScript projects, built while I was still studying. These projects were built using
+          the P5.js library and following tutorials by Coding Train - Daniel Shiffman
+        </Typography>
       </Grid>
 
       <Grid item>

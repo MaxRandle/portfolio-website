@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Card, CardHeader, CardContent, Divider, Typography } from "@material-ui/core";
+import { Grid, Card, CardHeader, CardContent, Divider, Typography, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({}));
@@ -10,16 +10,12 @@ const Page = props => {
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
       <Grid item>
-        <Card>
-          <CardContent>
-            <Typography>
-              One of my greatest passions is machine learning. It is a truly mind blowing phenomenon and it is one of
-              the few absolute certainties about future technology. Simple machine learning models are conceptually easy
-              to understand and can be experimented with using only a few lines of code with the help of a machine
-              learning library like Python Keras.
-            </Typography>
-          </CardContent>
-        </Card>
+        <Typography>
+          One of my greatest passions is machine learning. It is a truly mind blowing phenomenon and it is one of the
+          few absolute certainties about future technology. Simple machine learning models are conceptually easy to
+          understand and can be experimented with using only a few lines of code with the help of a machine learning
+          library like Python Keras.
+        </Typography>
       </Grid>
 
       <Grid item>
@@ -30,13 +26,15 @@ const Page = props => {
           <CardContent>
             <Typography>
               Neural networks are universal function approximators. This means that given enough high quality training
-              data, a neural network can be used to approximate ANY function.
-              <a href="https://github.com/MaxRandle/neural-network-py">This github repository</a> contains a neural
-              network that I built from scratch using only NumPy matrix multiplication as a basis for constructing the
-              model. The model consists of a configurable number of densely connected layers, each one containing a
-              configurable number of nodes. Each layer can have either ReLu or sigmoid as its activation function, the
-              output layer uses softmax for classification problems. For training, the model uses gradient descent as
-              its optimisation algorithm and backpropogation to update the weight matrix at each layer.
+              data, a neural network can be used to approximate ANY function.{" "}
+              <Link color="inherit" underline="always" href="https://github.com/MaxRandle/neural-network-py">
+                This github repository
+              </Link>{" "}
+              contains a neural network that I built from scratch using only NumPy matrix multiplication as a basis for
+              constructing the model. The model consists of a configurable number of densely connected layers, each one
+              containing a configurable number of nodes. Each layer can have either ReLu or sigmoid as its activation
+              function, the output layer uses softmax for classification problems. For training, the model uses gradient
+              descent as its optimisation algorithm and backpropogation to update the weight matrix at each layer.
             </Typography>
           </CardContent>
           <Divider />

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import react_logo from "../react-logo.svg";
 import material_ui_logo from "../material-ui-logo.svg";
 import github_logo from "../github-square-brands.svg";
 import linkedin_logo from "../linkedin-brands.svg";
@@ -26,7 +25,6 @@ const useStyles = makeStyles(theme => ({
 
 const HomePage = props => {
   const classes = useStyles();
-  const history = useHistory();
 
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
@@ -46,7 +44,7 @@ const HomePage = props => {
       </Grid>
 
       <Grid item className={classes.center}>
-        <img className={classes.avatar} src={max_randle_avatar} alt="linkedin logo" />
+        <img className={classes.avatar} src={max_randle_avatar} alt="portrate" />
       </Grid>
 
       <Grid item>

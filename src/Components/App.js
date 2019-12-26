@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HomePage from "./HomePage";
-import ProjectPage from "./ProjectPage";
+import ProjectsPage from "./ProjectsPage";
+import SkillsPage from "./SkillsPage";
 
 //import MenuIcon from "@material-ui/icons/Menu";
 
@@ -32,7 +33,16 @@ function App() {
           path="/projects"
           component={() => (
             <Container className={classes.pageContainer} maxWidth="md">
-              <ProjectPage />
+              <ProjectsPage />
+            </Container>
+          )}
+          exact
+        />
+        <Route
+          path="/skills"
+          component={() => (
+            <Container className={classes.pageContainer} maxWidth="md">
+              <SkillsPage />
             </Container>
           )}
           exact
