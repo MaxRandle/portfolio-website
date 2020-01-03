@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   iframe: {
-    width: "800px",
-    height: "400px"
+    width: "100%",
+    height: "500px"
   },
   center: {
     textAlign: "center"
