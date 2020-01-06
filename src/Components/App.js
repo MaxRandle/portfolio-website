@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import HomePage from "./HomePage";
 import ProjectsPage from "./ProjectsPage";
 import SkillsPage from "./SkillsPage";
+import SideMenu from "./SideMenu";
 
 //import MenuIcon from "@material-ui/icons/Menu";
 
@@ -18,7 +19,8 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className="App">
+    <>
+      <SideMenu />
       <Router>
         <Route
           path="/"
@@ -48,7 +50,7 @@ function App() {
           exact
         />
       </Router>
-    </div>
+    </>
   );
 }
 

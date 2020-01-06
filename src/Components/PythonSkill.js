@@ -8,10 +8,7 @@ import {
   Divider,
   Typography,
   CardActions,
-  Fab,
-  List,
-  ListItem,
-  ListItemText
+  Fab
 } from "@material-ui/core";
 import python_logo from "../Python-logo.svg";
 import { makeStyles } from "@material-ui/core/styles";

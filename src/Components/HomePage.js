@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     height: "18em"
   },
   title: {
-    lineHeight: "75px"
+    lineHeight: "80px"
   }
 }));
 
