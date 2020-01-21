@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { List, ListItem, ListItemIcon, ListItemText, Drawer, Divider, Link } from "@material-ui/core";
-// import HomeIcon from "@material-ui/icons/Home";
 import { useHistory } from "react-router-dom";
+import { AppStateContext } from "../contexts/AppStateContext";
 
 const SideMenu = props => {
-  // const history = useHistory();
-  const [open, setOpen] = useState(true);
+  const history = useHistory();
+  const [appState, setAppState] = useContext(AppStateContext);
 
   return (
-    <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+    <Drawer anchor="left" open={appState.menuOpen} onClose={() => setAppState({ ...appState, menuOpen: false })}>
       <List>
-        <ListItem button>
-          {/* <ListItem button onClick={() => history.push("/")}> */}
+        <ListItem button onClick={() => history.push("/")}>
           <ListItemText primary="Home" />
         </ListItem>
         <Divider />
-        <ListItem button>
+        <ListItem button onClick={() => history.push("/projects")}>
           <ListItemText primary="Projects" />
         </ListItem>
         <Divider />
-        <ListItem button>
+        <ListItem button onClick={() => history.push("/skills")}>
           <ListItemText primary="Skills" />
         </ListItem>
         <Divider />
-        <ListItem button>
+        <ListItem button onClick={() => history.push("/experience")}>
           <ListItemText primary="Experience" />
         </ListItem>
         <Divider />

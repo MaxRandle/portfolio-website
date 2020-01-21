@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container } from "@material-ui/core";
+import { Container, Fab } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HomePage from "./HomePage";
 import ProjectsPage from "./ProjectsPage";
 import SkillsPage from "./SkillsPage";
 import SideMenu from "./SideMenu";
-
-//import MenuIcon from "@material-ui/icons/Menu";
+import MenuButton from "./MenuButton";
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
     padding: theme.spacing(2)
+  },
+  fab: {
+    offset: "60px",
+    position: "fixed",
+    left: "0",
+    bottom: "0"
   }
 }));
 
@@ -20,8 +25,9 @@ function App() {
 
   return (
     <>
-      <SideMenu />
       <Router>
+        <MenuButton />
+        <SideMenu />
         <Route
           path="/"
           component={() => (
