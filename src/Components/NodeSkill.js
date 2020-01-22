@@ -33,12 +33,14 @@ const Page = props => {
       <Grid item>
         <img className={classes.logo} src={node_logo} alt="NodeJS logo" />
         <Typography>
-          I have used NodeJS for many project including building simple webservers and REST API's. I have also become
-          familiar with ExpressJS and MongoDB which when used together is a popular stack for building lightweight web
-          applications. My usage of these technologies was to expand the functionality of an existing API by building a
-          server which would retrieve data from the API every 2 hours and then store the data in a database. I then
-          added some endpoints so that the data could be requested in a wider variaty of ways and in a more useful
-          format.
+          This application is being hosted by a Node webserver running Express.js!
+          <br />
+          <br />I have used NodeJS for many project including this one such as building simple webservers and REST
+          API's. I have also become familiar with ExpressJS and MongoDB which when used together is a popular stack for
+          building lightweight web applications. My usage of these technologies was to expand the functionality of an
+          existing API by building a server which would retrieve data from the API every 2 hours and then store the data
+          in a database. I then added some endpoints so that the data could be requested in a wider variaty of ways and
+          in a more useful format.
         </Typography>
       </Grid>
 

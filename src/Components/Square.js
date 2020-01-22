@@ -69,7 +69,7 @@ const Square = props => {
 
   useEffect(() => {
     if (boardState.lastMove.square === square) {
-      console.log(`useEffect square ${square}`);
+      // console.log(`useEffect square ${square}`);
       // check local victory
       boardState.victoryArray[square] = checkVictory(boardState.boardArray[square]);
       // check global victory
