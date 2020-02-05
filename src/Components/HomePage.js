@@ -37,8 +37,8 @@ const HomePage = props => {
       <Grid item>
         <Typography className={classes.center}>
           I am a talented software developer with a diverse skillset. I have professional experience in front-end web
-          development and software automation, but i come from a much broader background which when coupled with an
-          innate curiosity and desire to learn, has lead me to take on projects in other fields such as AI, machine
+          development and software automation, but i come from a much broader coding background which when coupled with
+          an innate curiosity and desire to learn, has lead me to take on projects in other fields such as AI, machine
           learning, and API development.
         </Typography>
       </Grid>
