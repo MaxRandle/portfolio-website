@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Container, Fab } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import HomePage from "./HomePage";
+import IntroPage from "./IntroPage";
 import ProjectsPage from "./ProjectsPage";
 import SkillsPage from "./SkillsPage";
 import SideMenu from "./SideMenu";
 import MenuButton from "./MenuButton";
+import NavPage from "./NavPage";
+import NavBar from "./NavBar";
+import ShoppingCart from "./ShoppingCart";
+import ProjectRoute from "./ProjectRoute";
+import QualificationsPage from "./QualificationsPage";
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
-    padding: theme.spacing(2)
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(6)
+  },
+  navPageContainer: {
+    padding: theme.spacing(6)
   },
   fab: {
     offset: "60px",
@@ -24,39 +33,74 @@ function App() {
   const classes = useStyles();
 
   return (
-    <>
-      <Router>
-        <MenuButton />
-        <SideMenu />
-        <Route
-          path="/"
-          component={() => (
-            <Container className={classes.pageContainer} maxWidth="sm">
-              <HomePage />
-            </Container>
-          )}
-          exact
-        />
-        <Route
-          path="/projects"
-          component={() => (
+    <Router>
+      <Route
+        path="/intro"
+        component={() => (
+          <Container className={classes.pageContainer} maxWidth="sm">
+            <IntroPage />
+          </Container>
+        )}
+      />
+
+      <Route
+        path="/nav"
+        component={() => (
+          <>
+            <NavBar />
+            <SideMenu />
+            <ShoppingCart />
             <Container className={classes.pageContainer} maxWidth="md">
-              <ProjectsPage />
+              <NavPage />
             </Container>
-          )}
-          exact
-        />
-        <Route
-          path="/skills"
-          component={() => (
+          </>
+        )}
+      />
+
+      <Route
+        path="/projects"
+        component={() => (
+          <>
+            <NavBar />
+            <SideMenu />
+            <ShoppingCart />
+            <Container className={classes.pageContainer} maxWidth="md">
+              <ProjectRoute />
+            </Container>
+          </>
+        )}
+      ></Route>
+
+      <Route
+        path="/skills"
+        component={() => (
+          <>
+            <NavBar />
+            <SideMenu />
+            <ShoppingCart />
             <Container className={classes.pageContainer} maxWidth="md">
               <SkillsPage />
             </Container>
-          )}
-          exact
-        />
-      </Router>
-    </>
+          </>
+        )}
+      ></Route>
+
+      <Route
+        path="/qualifications"
+        component={() => (
+          <>
+            <NavBar />
+            <SideMenu />
+            <ShoppingCart />
+            <Container className={classes.pageContainer} maxWidth="md">
+              <QualificationsPage />
+            </Container>
+          </>
+        )}
+      ></Route>
+
+      <Route path="/" component={() => <Redirect to="/intro" />} exact />
+    </Router>
   );
 }
 

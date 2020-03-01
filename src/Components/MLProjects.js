@@ -10,6 +10,10 @@ const Page = props => {
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
       <Grid item>
+        <Typography variant="h3">Machine Learning</Typography>
+      </Grid>
+
+      <Grid item>
         <Typography>
           One of my greatest passions is machine learning. It is a truly mind blowing phenomenon and it is one of the
           few absolute certainties about future technology. Simple machine learning models are conceptually easy to

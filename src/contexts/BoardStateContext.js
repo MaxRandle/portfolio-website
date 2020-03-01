@@ -14,7 +14,9 @@ const BoardStateContextProvider = props => {
     victory: null
   });
 
-  return <BoardStateContext.Provider value={[boardState, setBoardState]}>{props.children}</BoardStateContext.Provider>;
+  return (
+    <BoardStateContext.Provider value={{ boardState, setBoardState }}>{props.children}</BoardStateContext.Provider>
+  );
 };
 
 export default BoardStateContextProvider;

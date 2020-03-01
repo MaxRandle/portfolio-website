@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
 
 const Square = props => {
   const classes = useStyles();
-  const [boardState, setBoardState] = useContext(BoardStateContext);
+  const { boardState, setBoardState } = useContext(BoardStateContext);
   const { square } = props;
 
   const getIcon = () => {

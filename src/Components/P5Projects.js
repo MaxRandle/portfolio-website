@@ -18,6 +18,10 @@ const Page = props => {
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
       <Grid item>
+        <Typography variant="h3">P5.js</Typography>
+      </Grid>
+
+      <Grid item>
         <Typography>
           Some of my first ever JavaScript projects, built while I was still studying. These projects were built using
           the P5.js library and following tutorials by Coding Train - Daniel Shiffman

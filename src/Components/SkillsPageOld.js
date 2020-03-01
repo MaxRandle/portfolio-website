@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Paper, Tabs, Tab, Grid } from "@material-ui/core";
-import P5Projects from "./P5Projects";
-import MLProjects from "./MLProjects";
-import AIProjects from "./AIProjects";
-import WebProjects from "./WebProjects";
-import ShoppingCartProject from "./ShoppingCartProject";
+import ReactSkill from "./ReactSkill";
+import UiPathSkill from "./UiPathSkill";
+import NodeSkill from "./NodeSkill";
+import PythonSkill from "./PythonSkill";
 
-const ProjectsPage = () => {
+const ProjectsPage = props => {
   const [val, setVal] = useState(0);
-  const project = [<P5Projects />, <MLProjects />, <AIProjects />, <ShoppingCartProject />];
+  const project = [<ReactSkill />, <UiPathSkill />, <NodeSkill />, <PythonSkill />];
 
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
@@ -16,14 +15,14 @@ const ProjectsPage = () => {
         <Paper>
           <Tabs
             value={val}
-            textColor="primary"
             onChange={(event, newVal) => setVal(newVal)}
             aria-label="disabled tabs example"
+            textColor="primary"
           >
-            <Tab label="P5.js" />
-            <Tab label="ML" />
-            <Tab label="AI" />
-            <Tab label="Web" />
+            <Tab label="React" />
+            <Tab label="UiPath" />
+            <Tab label="Node" />
+            <Tab label="Python" />
           </Tabs>
         </Paper>
       </Grid>

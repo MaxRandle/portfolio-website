@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 
 const MenuButton = props => {
   const classes = useStyles();
-  const [appState, setAppState] = useContext(AppStateContext);
+  const { appState, setAppState } = useContext(AppStateContext);
 
   return (
     <Fab

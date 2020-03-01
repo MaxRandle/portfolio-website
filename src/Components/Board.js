@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({}));
 
 const Board = () => {
   const classes = useStyles();
-  const [boardState, setBoardState] = useContext(BoardStateContext);
+  const { boardState, setBoardState } = useContext(BoardStateContext);
 
   return (
     <Grid container direction="column">

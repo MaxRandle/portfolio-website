@@ -39,17 +39,6 @@ const Page = props => {
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
       <Grid item>
-        <Typography variant="h3">Artificial Intelligence</Typography>
-      </Grid>
-
-      <Grid item>
-        <Typography>
-          AI in all forms has always interested me. I like implementing clever algorithms and here I have an example of
-          an algorithm that can outperform humans at the game of Ultimate Tic Tac Toe!
-        </Typography>
-      </Grid>
-
-      <Grid item>
         <Card>
           <CardHeader title="Ultimate Tic-Tac-Toe" />
           <Divider />

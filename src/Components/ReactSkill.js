@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 const ReactSkill = props => {
   const classes = useStyles();
-  const [BookList, dispatch] = useContext(BookListContext);
+  const { BookList, dispatch } = useContext(BookListContext);
 
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>

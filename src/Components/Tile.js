@@ -32,7 +32,7 @@ const useStyles = makeStyles(() => ({
 
 const Tile = props => {
   const classes = useStyles();
-  const [boardState, setBoardState] = useContext(BoardStateContext);
+  const { boardState, setBoardState } = useContext(BoardStateContext);
   const [legal, setLegal] = useState(true);
   const { square, tile } = props;
 

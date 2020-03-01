@@ -23,7 +23,7 @@ const BookListContextProvider = props => {
     localStorage.setItem("BookList", JSON.stringify(BookList));
   }, [BookList]);
 
-  return <BookListContext.Provider value={[BookList, dispatch]}>{props.children}</BookListContext.Provider>;
+  return <BookListContext.Provider value={{ BookList, dispatch }}>{props.children}</BookListContext.Provider>;
 };
 
 export default BookListContextProvider;

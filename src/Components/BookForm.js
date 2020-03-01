@@ -4,7 +4,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { BookListContext } from "../contexts/BookListContext";
 
 const BookForm = props => {
-  const [BookList, dispatch] = useContext(BookListContext);
+  const { BookList, dispatch } = useContext(BookListContext);
   const { id, data } = props;
 
   return (
