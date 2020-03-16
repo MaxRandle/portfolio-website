@@ -1,7 +1,21 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { Typography, Grid, Divider, Link, Container, Fab, Tooltip, Card, CardHeader } from "@material-ui/core";
+import {
+  Typography,
+  Grid,
+  Divider,
+  Link,
+  Container,
+  Fab,
+  Tooltip,
+  Card,
+  CardHeader,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import SideMenu from "./SideMenu";
@@ -10,6 +24,8 @@ import ProjectsPage from "./ProjectsPage";
 import SkillsPage from "./SkillsPageOld";
 import githubLogo from "../github-square-brands.svg";
 import linkedinLogo from "../linkedin-brands.svg";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
 const useStyles = makeStyles(theme => ({
   pageContainer: {
@@ -30,6 +46,9 @@ const useStyles = makeStyles(theme => ({
   },
   extendedFab: {
     marginLeft: theme.spacing(1)
+  },
+  indentedList: {
+    marginLeft: theme.spacing(4)
   }
 }));
 
@@ -37,14 +56,91 @@ const NavPage = props => {
   const classes = useStyles();
   const history = useHistory();
 
+  const Projects = () => (
+    <>
+      <Typography variant="h3">Projects</Typography>
+      <Container maxWidth="md">
+        <List>
+          <ListItem button onClick={() => history.push("/projects/p5_js")}>
+            <ListItemText>P5.js</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => history.push("/projects/neural_network")}>
+            <ListItemText>Neural Network</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => history.push("/projects/uttt_ai")}>
+            <ListItemText>UTTT AI</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => history.push("/projects/book_list")}>
+            <ListItemText>Book List</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => history.push("/projects/shopping_cart")}>
+            <ListItemText>Shopping Cart</ListItemText>
+          </ListItem>
+        </List>
+      </Container>
+    </>
+  );
+
+  const External = () => (
+    <>
+      <Typography variant="h3">External</Typography>
+      <Container maxWidth="md">
+        <List>
+          <ListItem button onClick={() => window.open("https://github.com/MaxRandle")}>
+            <ListItemIcon>
+              <GitHubIcon />
+            </ListItemIcon>
+            <ListItemText>Github</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => window.open("https://www.linkedin.com/in/max-randle-a79760160/")}>
+            <ListItemIcon>
+              <LinkedInIcon />
+            </ListItemIcon>
+            <ListItemText>Linkedin</ListItemText>
+          </ListItem>
+        </List>
+      </Container>
+    </>
+  );
+
   return (
     <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={6}>
       <Grid item>
-        <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={2}>
-          <Grid item>
-            <Typography variant="h3">Projects</Typography>
+        <Link variant="h3" component="button" onClick={() => history.push("/skills")}>
+          Skills
+        </Link>
+      </Grid>
+
+      <Grid item>
+        <Link variant="h3" component="button" onClick={() => history.push("/experience")}>
+          Eperience
+        </Link>
+      </Grid>
+
+      <Grid item>
+        <Link variant="h3" component="button" onClick={() => history.push("/qualifications")}>
+          Qualifications
+        </Link>
+      </Grid>
+
+      <Grid item>
+        <Grid container>
+          <Grid item sm={6} xs={12}>
+            <Projects />
           </Grid>
-          <Grid item>
+
+          <Grid item sm={6} xs={12}>
+            <External />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default NavPage;
+
+/* <Grid item>
             <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={2}>
               <Grid item>
                 <Fab variant="extended" color="secondary" onClick={() => history.push("/projects/p5_js")}>
@@ -77,57 +173,9 @@ const NavPage = props => {
                 </Fab>
               </Grid>
             </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+          </Grid> */
 
-      <Grid item>
-        <Grid container spacing={2}>
-          <Grid item>
-            <Typography variant="h3">Skills</Typography>
-          </Grid>
-          <Grid item>
-            <Fab color="primary" onClick={() => history.push("/skills")}>
-              <NavigateNextIcon />
-            </Fab>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <Grid item>
-        <Grid container spacing={2}>
-          <Grid item>
-            <Typography variant="h3">Experience</Typography>
-          </Grid>
-          <Grid item>
-            <Fab color="primary" onClick={() => history.push("/experience")}>
-              <NavigateNextIcon />
-            </Fab>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <Grid item>
-        <Grid container spacing={2}>
-          <Grid item>
-            <Typography variant="h3">Qualifications</Typography>
-          </Grid>
-          <Grid item>
-            <Fab color="primary" onClick={() => history.push("/qualifications")}>
-              <NavigateNextIcon />
-            </Fab>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <Grid item>
-        <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={2}>
-          <Grid item>
-            <Typography variant="h3">External</Typography>
-          </Grid>
-
-          <Grid item>
-            <Grid container direction="row" justify="flex-start" alignItems="center" spacing={6}>
+/* <Grid container direction="row" justify="flex-start" alignItems="center" spacing={6}>
               <Grid item>
                 <Tooltip title="Github">
                   <a href="https://github.com/MaxRandle" target="_blank">
@@ -143,12 +191,4 @@ const NavPage = props => {
                   </a>
                 </Tooltip>
               </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
-  );
-};
-
-export default NavPage;
+            </Grid> */

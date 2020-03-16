@@ -21,6 +21,10 @@ const useStyles = makeStyles(theme => ({
   navPageContainer: {
     padding: theme.spacing(6)
   },
+  introPageContainer: {
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3)
+  },
   fab: {
     offset: "60px",
     position: "fixed",
@@ -37,7 +41,7 @@ function App() {
       <Route
         path="/intro"
         component={() => (
-          <Container className={classes.pageContainer} maxWidth="sm">
+          <Container className={classes.introPageContainer} maxWidth="sm">
             <IntroPage />
           </Container>
         )}
