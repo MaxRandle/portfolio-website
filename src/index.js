@@ -7,7 +7,6 @@ import { createMuiTheme, ThemeProvider, withStyles } from "@material-ui/core/sty
 import { CssBaseline } from "@material-ui/core";
 import BookListContextProvider from "./contexts/BookListContext";
 import AppStateContextProvider from "./contexts/AppStateContext";
-import BoardStateContextProvider from "./contexts/BoardStateContext";
 import CartContextProvider from "./contexts/CartContext";
 
 const theme = createMuiTheme({
@@ -24,16 +23,14 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <BookListContextProvider>
-    <BoardStateContextProvider>
-      <AppStateContextProvider>
-        <CartContextProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <App />
-          </ThemeProvider>
-        </CartContextProvider>
-      </AppStateContextProvider>
-    </BoardStateContextProvider>
+    <AppStateContextProvider>
+      <CartContextProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </CartContextProvider>
+    </AppStateContextProvider>
   </BookListContextProvider>,
   document.getElementById("root")
 );

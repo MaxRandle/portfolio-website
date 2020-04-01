@@ -17,13 +17,6 @@ import {
   ListItemText
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import SideMenu from "./SideMenu";
-import NavBar from "./NavBar";
-import ProjectsPage from "./ProjectsPage";
-import SkillsPage from "./SkillsPageOld";
-import githubLogo from "../github-square-brands.svg";
-import linkedinLogo from "../linkedin-brands.svg";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 

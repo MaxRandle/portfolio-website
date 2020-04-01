@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardHeader, CardContent, Divider, Typography, Link } from "@material-ui/core";
+import { Card, CardHeader, CardContent, Divider, Typography, Link, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({}));
@@ -8,11 +8,14 @@ const Page = props => {
   const classes = useStyles();
 
   return (
-    <Card>
-      <CardHeader title="Neural Network from scratch" />
-      <Divider />
+    <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
+      <Grid item>
+        <Typography variant="h3">Neural Network from scratch</Typography>
+      </Grid>
 
-      <CardContent>
+      <Grid item>
+        <Typography variant="h5">Description: </Typography>
+
         <Typography>
           Neural networks are universal function approximators. This means that given enough high quality training data,
           a neural network can be used to approximate ANY function.
@@ -29,10 +32,10 @@ const Page = props => {
           softmax for classification problems. For training, the model uses gradient descent as its optimisation
           algorithm and backpropogation to update the weight matrix at each layer.
         </Typography>
-      </CardContent>
-      <Divider />
-      <CardContent>
-        <Typography>Simplified training algorithm:</Typography>
+      </Grid>
+
+      <Grid item>
+        <Typography variant="h5">Simplified training algorithm:</Typography>
         <code>.* </code> operator represents element-wise multiplication of two matricies
         <br />
         <code>* </code> operator represents matrix or scalar multiplication
@@ -53,29 +56,27 @@ const Page = props => {
         <pre>
           <code>{pseudocodeString}</code>
         </pre>
-      </CardContent>
-    </Card>
+      </Grid>
+    </Grid>
   );
 };
 
 export default Page;
 
 const pseudocodeString = `// feedforward
-
 a[0] = x
 for n in  (0 -> number_of_layers) {
-    z = w[n] * a[n-1] + b[n]
-    a[n] = g(z)
+  z = w[n] * a[n-1] + b[n]
+  a[n] = g(z)
 }
 
 // backpropogation
-
 for n in (number_of_layers-1 -> 0) {
-    if n === number_of_layers-1 {
-        error[n] = y - a[n]
-    } else{
-        error[n] = w[n+1].T * error[n+1]
-    }
+  if n === number_of_layers-1 {
+    error[n] = y - a[n]
+  } else{
+    error[n] = w[n+1].T * error[n+1]
+  }
     gradient[n] = g'(a[n]) .* error[n] * alpha
     delta[n] = gradient[n] * a[n-1].T
     w[n] += delta[n]

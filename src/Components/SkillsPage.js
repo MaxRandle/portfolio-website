@@ -47,10 +47,8 @@ const ReactSkill = props => {
           React is my go-to for any front end web task. Its powerful and versatile, when used properly React can produce
           some very snappy, scalable, and responsive web applications. For these reasons, React has become a very
           popular framework and therefore there is a huge knowlegebase and lot of support and documentation. React can
-          also make use of Material-ui, a popular component and styling library built by google, which is how I built
-          this website! It's all well and good to build a static, non-functional portfolio... but this is a selling
-          point so let's flex a little. This is designed to demonstrate my skills in DOM manipulation and state
-          management using react.
+          also make use of Material-ui, a popular component and styling library based on googles industry leading
+          material-design style guide, which is how I built this website!
         </Typography>
       </Grid>
 

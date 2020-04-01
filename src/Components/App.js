@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { Container, Fab } from "@material-ui/core";
+import React from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import IntroPage from "./IntroPage";
-import ProjectsPage from "./ProjectsPage";
 import SkillsPage from "./SkillsPage";
 import SideMenu from "./SideMenu";
-import MenuButton from "./MenuButton";
 import NavPage from "./NavPage";
 import NavBar from "./NavBar";
 import ShoppingCart from "./ShoppingCart";
