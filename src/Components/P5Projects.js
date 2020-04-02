@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Card, CardHeader, CardContent, Divider, Typography } from "@material-ui/core";
+import { Grid, Card, CardHeader, CardContent, Divider, Typography, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +24,10 @@ const Page = props => {
       <Grid item>
         <Typography>
           Some of my first ever JavaScript projects, built while I was still studying. These projects were built using
-          the P5.js library and following tutorials by Coding Train - Daniel Shiffman
+          the P5.js library and following tutorials by{" "}
+          <Link color="inherit" underline="always" href="https://www.youtube.com/user/shiffman">
+            Coding Train - Daniel Shiffman
+          </Link>
         </Typography>
       </Grid>
 
