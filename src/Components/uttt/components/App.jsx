@@ -1,42 +1,52 @@
 import React from "react";
 import Board from "./Board";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { CssBaseline, Grid } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core/styles";
+import { CssBaseline, Grid, Box } from "@material-ui/core";
 import GameStateContextProvider from "../contexts/GameStateContext";
+import SizeContextProvider from "../contexts/SizeContext";
 import ControlBar from "./ControlBar";
 
 const theme = createMuiTheme({
   palette: {
     type: "dark",
     secondary: {
-      main: "#263690"
-    }
+      main: "#263690",
+    },
   },
   spacing: 4,
   tile: {
     small: {
-      size: 40
+      size: "calc(11.111vmin - 6.223px)",
+      // size: 40
     },
     large: {
-      size: 128
-    }
-  }
+      size: "calc(33.333vmin - 10.667px)",
+    },
+  },
+  tilePadding: {},
 });
 
-function App() {
+const useStyles = makeStyles((theme) => ({
+  spacer: {
+    marginBottom: "16px",
+  },
+  center: {
+    textAlign: "center",
+  },
+}));
+
+function App(props) {
+  const classes = useStyles();
+
   return (
     <GameStateContextProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={4}>
-          <Grid item>
-            <ControlBar />
-          </Grid>
-          <Grid item>
-            <Board />
-          </Grid>
-        </Grid>
-      </ThemeProvider>
+      <SizeContextProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {/* <ControlBar className={classes.spacer} /> */}
+          <Board />
+        </ThemeProvider>
+      </SizeContextProvider>
     </GameStateContextProvider>
   );
 }

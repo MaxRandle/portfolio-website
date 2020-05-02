@@ -2,21 +2,23 @@ import React, { useState, useContext, useEffect } from "react";
 import { LinearProgress, Paper, Card, CardHeader } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { GameStateContext } from "../contexts/GameStateContext";
+import { SizeContext } from "../contexts/SizeContext";
 import { getBoardEval } from "../AI.js";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   spacer: {
-    height: "4px"
-  }
+    height: "4px",
+  },
 }));
 
-const ControlBar = () => {
+const ControlBar = (props) => {
   const classes = useStyles();
   const { gameState } = useContext(GameStateContext);
+  const { squareSize } = useContext(SizeContext);
   const [loading, setLoading] = useState(true);
   const [evaluation, setEvaluation] = useState(0);
 
-  const evaluateBoard = gs => {
+  const evaluateBoard = (gs) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const ev = getBoardEval(gs);
@@ -52,7 +54,7 @@ const ControlBar = () => {
   }, [gameState]);
 
   return (
-    <Card>
+    <Card style={{ width: squareSize * 3 + 32 }} {...props}>
       {/* {loading && <LinearProgress />}
       {!loading && <div className={classes.spacer} />} */}
       <CardHeader title={`Evaluation: ${evaluation}`} />

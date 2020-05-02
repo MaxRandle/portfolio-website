@@ -1,68 +1,71 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Typography, Grid, Divider, Link, Fab } from "@material-ui/core";
+import { Typography, Grid, Divider, Link, Fab, Box } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 
 import materialUiLogo from "../material-ui-logo.svg";
 
 import maxRandleAvatar from "../portrate-max-randle.jpg";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(2, 0, 0, 0),
+  },
+  section: {
+    margin: theme.spacing(0, 0, 2, 0),
+  },
   logo: {
-    height: 80
+    height: 80,
   },
   center: {
-    textAlign: "center"
+    textAlign: "center",
   },
   avatar: {
     borderRadius: "50%",
-    height: "18em"
+    height: "18em",
   },
   title: {
-    lineHeight: "80px"
+    lineHeight: "80px",
   },
   extendedFab: {
-    marginLeft: theme.spacing(1)
-  }
+    marginLeft: theme.spacing(1),
+  },
 }));
 
-const IntroPage = props => {
+const IntroPage = (props) => {
   const classes = useStyles();
   const history = useHistory();
 
   return (
-    <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
-      <Grid item>
-        <Typography color="inherit" className={`${classes.center} ${classes.title}`} variant="h1">
-          Max Randle
-        </Typography>
-      </Grid>
+    <Box className={classes.container}>
+      <Typography className={clsx(classes.section, classes.title, classes.center)} color="inherit" variant="h1">
+        Max Randle
+      </Typography>
 
-      <Grid item>
-        <Typography className={classes.center}>
-          Hi, I'm max, a talented software developer with a diverse skillset. I have professional experience in
-          front-end web development and software automation, but i come from a much broader coding background which when
-          coupled with an innate curiosity and desire to learn, has lead me to take on projects in other fields such as
-          AI, machine learning, and API development.
-        </Typography>
-      </Grid>
+      <Typography className={clsx(classes.section, classes.center)}>
+        Hi, I'm max, a talented software developer with a diverse skillset. I have professional experience in front-end
+        web development and software automation, but i come from a much broader coding background which when coupled
+        with an innate curiosity and desire to learn, has lead me to take on projects in other fields such as AI,
+        machine learning, and API development.
+      </Typography>
 
-      <Grid item className={classes.center}>
-        <img className={classes.avatar} src={maxRandleAvatar} alt="portrate" />
-      </Grid>
+      <Box className={clsx(classes.section, classes.center)}>
+        <img className={clsx(classes.avatar)} src={maxRandleAvatar} alt="portrate" />
+      </Box>
 
-      <Grid item>
-        <Divider variant="middle" />
-      </Grid>
+      <Divider className={clsx(classes.section)} />
 
-      <Grid item className={classes.center}>
+      <Box className={clsx(classes.section, classes.center)}>
         <Fab variant="extended" color="primary" onClick={() => history.push("/nav")}>
           <Typography className={classes.extendedFab}>Enter</Typography>
           <NavigateNextIcon />
         </Fab>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

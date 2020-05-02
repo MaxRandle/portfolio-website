@@ -1,27 +1,24 @@
 import React from "react";
-import { Grid, Typography, Link } from "@material-ui/core";
+import { Grid, Typography, Link, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Uttt from "./uttt/components/App";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   center: {
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 }));
 
-const Page = props => {
+const Page = (props) => {
+  const classes = useStyles();
   return (
-    <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
+    <Grid container direction="column" justify="flex-start" spacing={3}>
       <Grid item>
         <Typography variant="h3">Ultimate Tic-Tac-Toe AI</Typography>
       </Grid>
 
       <Grid item>
-        <Grid container justify="center">
-          <Grid item>
-            <Uttt />
-          </Grid>
-        </Grid>
+        <Uttt />
       </Grid>
 
       <Grid item>

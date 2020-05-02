@@ -7,13 +7,13 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import HomeIcon from "@material-ui/icons/Home";
 import { AppStateContext } from "../contexts/AppStateContext";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(3)
-  }
+    marginRight: theme.spacing(3),
+  },
 }));
 
 const Navbar = () => {
@@ -33,11 +33,11 @@ const Navbar = () => {
         <Typography variant="h6" className={classes.title}>
           Max's Portfolio
         </Typography>
-        <Tooltip title="View Cart">
+        {/* <Tooltip title="View Cart">
           <IconButton onClick={() => setAppState({ ...appState, cartOpen: true })}>
             <ShoppingCartIcon />
           </IconButton>
-        </Tooltip>
+        </Tooltip> */}
       </Toolbar>
     </AppBar>
   );

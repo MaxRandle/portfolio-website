@@ -1,13 +1,13 @@
-export const getRandomMove = gameState => {
+export const getRandomMove = (gameState) => {
   const legalMoves = getLegalMoves(gameState);
   const randomMove = legalMoves[Math.floor(Math.random() * legalMoves.length)];
   return randomMove;
 };
 
-export const getBoardEval = gameState => minimax(gameState, 6, -Infinity, +Infinity, gameState.turn);
+export const getBoardEval = (gameState) => minimax(gameState, 6, -Infinity, +Infinity, gameState.turn);
 
-export const getBestMove = gameState => {
-  let depth = 7; // recommended 6
+export const getBestMove = (gameState) => {
+  let depth = 6; // recommended 6
   const moves = getLegalMoves(gameState);
   if (moves.length > 2) {
     depth -= 1;
@@ -17,9 +17,9 @@ export const getBestMove = gameState => {
   }
   // depth = 1; // delete this
   console.log(`Search depth: ${depth}`);
-  const moveScores = moves.map(move => ({
+  const moveScores = moves.map((move) => ({
     ...move,
-    score: minimax(getNextState(gameState, move), depth, -Infinity, +Infinity, -1)
+    score: minimax(getNextState(gameState, move), depth, -Infinity, +Infinity, -1),
     // score: staticEval(getNextState(gameState, move))
   }));
 
@@ -41,12 +41,12 @@ const minimax = (gameState, depth, alpha, beta, player) => {
   }
 
   //get all child gameStates
-  const children = getLegalMoves(gameState).map(move => getNextState(gameState, move));
+  const children = getLegalMoves(gameState).map((move) => getNextState(gameState, move));
 
   // if maximizing player
   if (player === 1) {
     let maxEval = -Infinity;
-    children.every(child => {
+    children.every((child) => {
       const currentEval = minimax(child, depth - 1, alpha, beta, -1);
       maxEval = Math.max(maxEval, currentEval);
       alpha = Math.max(alpha, currentEval);
@@ -61,7 +61,7 @@ const minimax = (gameState, depth, alpha, beta, player) => {
   // if minimizing player
   else {
     let minEval = +Infinity;
-    children.every(child => {
+    children.every((child) => {
       const currentEval = minimax(child, depth - 1, alpha, beta, 1);
       minEval = Math.min(minEval, currentEval);
       beta = Math.min(beta, currentEval);
@@ -74,7 +74,7 @@ const minimax = (gameState, depth, alpha, beta, player) => {
   }
 };
 
-const getLegalMoves = gameState => {
+const getLegalMoves = (gameState) => {
   // get an array of all legal moves in the given gameState
   let moves = [];
   for (let i = 0; i < 9; i++) {
@@ -101,7 +101,7 @@ const isLegal = (gameState, move) => {
   );
 };
 
-const checkVictory = arr => {
+const checkVictory = (arr) => {
   let vicArray = [
     arr[0] + arr[1] + arr[2],
     arr[3] + arr[4] + arr[5],
@@ -110,7 +110,7 @@ const checkVictory = arr => {
     arr[1] + arr[4] + arr[7],
     arr[2] + arr[5] + arr[8],
     arr[0] + arr[4] + arr[8],
-    arr[2] + arr[4] + arr[6]
+    arr[2] + arr[4] + arr[6],
   ];
   if (Math.max(...vicArray) === 3) {
     return 1;
@@ -138,7 +138,7 @@ const getNextState = (gameState, move) => {
   return nextState;
 };
 
-export const staticEval = gameState => {
+export const staticEval = (gameState) => {
   // return a number indicating how advantageous the game is.
 
   // check if the game is won
@@ -158,7 +158,7 @@ export const staticEval = gameState => {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
 
   // calculate the wieght of each square and the value of the large board
@@ -167,7 +167,7 @@ export const staticEval = gameState => {
   // let squareWeights = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   // let squareWeights = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   let largeBoardScore = 0;
-  lines.forEach(line => {
+  lines.forEach((line) => {
     const lineEval = evaluateLine(gameState.localVictories, line);
     squareWeights[line[0]] += Math.abs(lineEval);
     squareWeights[line[1]] += Math.abs(lineEval);
@@ -207,7 +207,7 @@ const evaluateLine = (square, line) => {
   // otherwise returns 0
 
   let result = 0;
-  line.every(tile => {
+  line.every((tile) => {
     if (square[tile] === 0) {
       result = 0;
       return false;

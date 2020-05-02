@@ -3,26 +3,24 @@ import PropTypes from "prop-types";
 import { Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { GameStateContext } from "../contexts/GameStateContext";
+import { SizeContext } from "../contexts/SizeContext";
 import Token from "./Token";
 
-const useStyles = makeStyles(theme => ({
-  tile: {
-    width: theme.tile.small.size,
-    height: theme.tile.small.size
-  },
+const useStyles = makeStyles((theme) => ({
   legal: {
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
   },
   hover: {
-    backgroundColor: theme.palette.secondary.light
+    backgroundColor: theme.palette.secondary.light,
   },
   lastMove: {
     borderColor: "#00FF00",
-    borderWidth: "2px"
-  }
+    borderWidth: "2px",
+  },
 }));
 
-const Tile = props => {
+const Tile = (props) => {
+  const { tileSize } = useContext(SizeContext);
   const { square, tile, ...otherProps } = props;
   const { gameState, playMove } = useContext(GameStateContext);
   const [hover, setHover] = useState(false);
@@ -44,14 +42,15 @@ const Tile = props => {
     if (isLegal()) {
       playMove({
         square,
-        tile
+        tile,
       });
     }
   };
 
   return (
     <Paper
-      className={`${classes.tile} ${isLegal() && classes.legal} ${isLegal() && hover && classes.hover}`}
+      className={`${isLegal() && classes.legal} ${isLegal() && hover && classes.hover}`}
+      style={{ width: tileSize, height: tileSize }}
       classes={{ outlined: classes.lastMove }}
       {...otherProps}
       onClick={() => handleClick()}
@@ -68,5 +67,5 @@ export default Tile;
 
 Tile.propTypes = {
   square: PropTypes.number.isRequired,
-  tile: PropTypes.number.isRequired
+  tile: PropTypes.number.isRequired,
 };

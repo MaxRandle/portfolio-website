@@ -14,45 +14,83 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import clsx from "clsx";
 
-const useStyles = makeStyles(theme => ({
-  pageContainer: {
-    padding: theme.spacing(2)
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(2, 0, 0, 0),
+  },
+  section: {
+    marginBottom: theme.spacing(2),
   },
   logo: {
-    height: 80
+    height: 80,
   },
   center: {
-    textAlign: "center"
-  },
-  avatar: {
-    borderRadius: "50%",
-    height: "18em"
+    textAlign: "center",
   },
   title: {
-    lineHeight: "80px"
+    lineHeight: "80px",
   },
   extendedFab: {
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
   },
-  indentedList: {
-    marginLeft: theme.spacing(4)
-  }
+  link: {
+    color: "white",
+  },
+  indent: {
+    marginLeft: theme.spacing(2),
+  },
+  disector: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  disectorDivider: {
+    flexGrow: "1",
+  },
+  disectorText: {
+    padding: theme.spacing(0, 2, 0, 2),
+  },
 }));
 
-const NavPage = props => {
+const NavPage = (props) => {
   const classes = useStyles();
   const history = useHistory();
 
-  const Projects = () => (
-    <>
-      <Typography variant="h3">Projects</Typography>
-      <Container maxWidth="md">
+  return (
+    <Box className={classes.container}>
+      <Box className={clsx(classes.section)}>
+        <List>
+          <ListItem button onClick={() => history.push("/skills")}>
+            <ListItemText primaryTypographyProps={{ variant: "h3" }}>Skills</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => history.push("/experience")}>
+            <ListItemText primaryTypographyProps={{ variant: "h3" }}>Experience</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => history.push("/qualifications")}>
+            <ListItemText primaryTypographyProps={{ variant: "h3" }}>Qualifications</ListItemText>
+          </ListItem>
+        </List>
+      </Box>
+
+      <Box className={clsx(classes.disector)}>
+        <Divider className={classes.disectorDivider} />
+        <Typography className={classes.disectorText} variant="h3">
+          Projects
+        </Typography>
+        <Divider className={classes.disectorDivider} />
+      </Box>
+
+      <Container className={clsx(classes.section)}>
         <List>
           <ListItem button onClick={() => history.push("/projects/p5_js")}>
             <ListItemText>P5.js</ListItemText>
@@ -71,13 +109,16 @@ const NavPage = props => {
           </ListItem>
         </List>
       </Container>
-    </>
-  );
 
-  const External = () => (
-    <>
-      <Typography variant="h3">External</Typography>
-      <Container maxWidth="md">
+      <Box className={clsx(classes.disector)}>
+        <Divider className={classes.disectorDivider} />
+        <Typography className={classes.disectorText} variant="h3">
+          External
+        </Typography>
+        <Divider className={classes.disectorDivider} />
+      </Box>
+
+      <Container className={clsx(classes.section)}>
         <List>
           <ListItem button onClick={() => window.open("https://github.com/MaxRandle")}>
             <ListItemIcon>
@@ -93,95 +134,8 @@ const NavPage = props => {
           </ListItem>
         </List>
       </Container>
-    </>
-  );
-
-  return (
-    <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={6}>
-      <Grid item>
-        <Link variant="h3" component="button" onClick={() => history.push("/skills")}>
-          Skills
-        </Link>
-      </Grid>
-
-      <Grid item>
-        <Link variant="h3" component="button" onClick={() => history.push("/experience")}>
-          Eperience
-        </Link>
-      </Grid>
-
-      <Grid item>
-        <Link variant="h3" component="button" onClick={() => history.push("/qualifications")}>
-          Qualifications
-        </Link>
-      </Grid>
-
-      <Grid item>
-        <Grid container>
-          <Grid item sm={6} xs={12}>
-            <Projects />
-          </Grid>
-
-          <Grid item sm={6} xs={12}>
-            <External />
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+    </Box>
   );
 };
 
 export default NavPage;
-
-/* <Grid item>
-            <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={2}>
-              <Grid item>
-                <Fab variant="extended" color="secondary" onClick={() => history.push("/projects/p5_js")}>
-                  <Typography className={classes.extendedFab}>P5.js</Typography>
-                  <NavigateNextIcon />
-                </Fab>
-              </Grid>
-              <Grid item>
-                <Fab variant="extended" color="secondary" onClick={() => history.push("/projects/neural_network")}>
-                  <Typography className={classes.extendedFab}>Neural Network</Typography>
-                  <NavigateNextIcon />
-                </Fab>
-              </Grid>
-              <Grid item>
-                <Fab variant="extended" color="secondary" onClick={() => history.push("/projects/uttt_ai")}>
-                  <Typography className={classes.extendedFab}>UTTT AI</Typography>
-                  <NavigateNextIcon />
-                </Fab>
-              </Grid>
-              <Grid item>
-                <Fab variant="extended" color="secondary" onClick={() => history.push("/projects/book_list")}>
-                  <Typography className={classes.extendedFab}>Book List</Typography>
-                  <NavigateNextIcon />
-                </Fab>
-              </Grid>
-              <Grid item>
-                <Fab variant="extended" color="secondary" onClick={() => history.push("/projects/shopping_cart")}>
-                  <Typography className={classes.extendedFab}>Shopping Cart</Typography>
-                  <NavigateNextIcon />
-                </Fab>
-              </Grid>
-            </Grid>
-          </Grid> */
-
-/* <Grid container direction="row" justify="flex-start" alignItems="center" spacing={6}>
-              <Grid item>
-                <Tooltip title="Github">
-                  <a href="https://github.com/MaxRandle" target="_blank">
-                    <img className={classes.logo} src={githubLogo} alt="github logo" />
-                  </a>
-                </Tooltip>
-              </Grid>
-
-              <Grid item>
-                <Tooltip title="Linkedin">
-                  <a href="https://www.linkedin.com/in/max-randle-a79760160/" target="_blank">
-                    <img className={classes.logo} src={linkedinLogo} alt="linkedin logo" />
-                  </a>
-                </Tooltip>
-              </Grid>
-            </Grid> */

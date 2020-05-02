@@ -11,24 +11,24 @@ import ShoppingCart from "./ShoppingCart";
 import ProjectRoute from "./ProjectRoute";
 import QualificationsPage from "./QualificationsPage";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   pageContainer: {
     paddingTop: theme.spacing(6),
-    paddingBottom: theme.spacing(6)
+    paddingBottom: theme.spacing(6),
   },
   navPageContainer: {
-    padding: theme.spacing(6)
+    padding: theme.spacing(6),
   },
   introPageContainer: {
     paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3)
+    paddingBottom: theme.spacing(3),
   },
   fab: {
     offset: "60px",
     position: "fixed",
     left: "0",
-    bottom: "0"
-  }
+    bottom: "0",
+  },
 }));
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
       <Route
         path="/intro"
         component={() => (
-          <Container className={classes.introPageContainer} maxWidth="sm">
+          <Container disableGutters maxWidth="sm">
             <IntroPage />
           </Container>
         )}
@@ -51,8 +51,7 @@ function App() {
           <>
             <NavBar />
             <SideMenu />
-            <ShoppingCart />
-            <Container className={classes.pageContainer} maxWidth="md">
+            <Container maxWidth="sm">
               <NavPage />
             </Container>
           </>
@@ -65,8 +64,11 @@ function App() {
           <>
             <NavBar />
             <SideMenu />
-            <ShoppingCart />
-            <Container className={classes.pageContainer} maxWidth="md">
+            <Container
+              // className={classes.pageContainer}
+              maxWidth="md"
+              disableGutters
+            >
               <ProjectRoute />
             </Container>
           </>
@@ -79,7 +81,6 @@ function App() {
           <>
             <NavBar />
             <SideMenu />
-            <ShoppingCart />
             <Container className={classes.pageContainer} maxWidth="md">
               <SkillsPage />
             </Container>
@@ -93,7 +94,6 @@ function App() {
           <>
             <NavBar />
             <SideMenu />
-            <ShoppingCart />
             <Container className={classes.pageContainer} maxWidth="md">
               <QualificationsPage />
             </Container>

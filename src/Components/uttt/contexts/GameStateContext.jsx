@@ -4,19 +4,19 @@ import { useEffect } from "react";
 
 export const GameStateContext = createContext();
 
-const GameStateContextProvider = props => {
+const GameStateContextProvider = (props) => {
   const [gameState, setGameState] = useState({
-    board: new Array(9).fill(new Array(9).fill(false)).map(x => x.slice(0)),
+    board: new Array(9).fill(new Array(9).fill(false)).map((x) => x.slice(0)),
     localVictories: new Array(9).fill(false),
     lastMove: {
       square: false,
-      tile: false
+      tile: false,
     },
     turn: -1,
-    victory: false
+    victory: false,
   });
 
-  const playMove = move => {
+  const playMove = (move) => {
     const { square, tile } = move;
     //create a new arrect which we can mutate
     let newGame = JSON.parse(JSON.stringify(gameState));
@@ -46,7 +46,7 @@ const GameStateContextProvider = props => {
 
 export default GameStateContextProvider;
 
-const checkVictory = arr => {
+const checkVictory = (arr) => {
   let vicArray = [
     arr[0] + arr[1] + arr[2],
     arr[3] + arr[4] + arr[5],
@@ -55,7 +55,7 @@ const checkVictory = arr => {
     arr[1] + arr[4] + arr[7],
     arr[2] + arr[5] + arr[8],
     arr[0] + arr[4] + arr[8],
-    arr[2] + arr[4] + arr[6]
+    arr[2] + arr[4] + arr[6],
   ];
   if (Math.max(...vicArray) === 3) {
     return 1;
