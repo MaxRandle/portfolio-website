@@ -1,9 +1,18 @@
 import React from "react";
-import { Grid, Typography, Link, Container } from "@material-ui/core";
+import { Grid, Typography, Link, Container, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Uttt from "./uttt/components/App";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(3, 0, 0, 0),
+  },
+  section: {
+    marginBottom: theme.spacing(3),
+  },
   center: {
     textAlign: "center",
   },
@@ -12,16 +21,14 @@ const useStyles = makeStyles((theme) => ({
 const Page = (props) => {
   const classes = useStyles();
   return (
-    <Grid container direction="column" justify="flex-start" spacing={3}>
-      <Grid item>
+    <Box className={classes.container}>
+      <Container className={classes.section}>
         <Typography variant="h3">Ultimate Tic-Tac-Toe AI</Typography>
-      </Grid>
+      </Container>
 
-      <Grid item>
-        <Uttt />
-      </Grid>
+      <Uttt className={clsx(classes.section, classes.center)} />
 
-      <Grid item>
+      <Container className={classes.section}>
         <Typography>
           The game of UTTT (Ultimate Tic Tac Toe) is a recursive version of the more familiar game of Tic Tac Toe
           (Naughts and Crosses). The game is played on a board consisting of nine mini-boards arranged into the shape of
@@ -62,18 +69,18 @@ const Page = (props) => {
           run inside a browser. Another possibility we have is to try to figure out an evaluation that is less accurate
           but can be computed in a very short amount of time and therefore will allow us to search deeper into the game
           to compensate. This was the approach used for this agent. The evaluation function that was created for this
-          scenario is described as follows… Firstly it checks if the game is over and if it is, returns a large positive
-          or negative score (depending on the winner). If the game is not over it means we cannot see the end of the
-          game within our search tree. So we must estimate how close we are to winning using more complex methods. The
-          function then evaluates the large TTT board the same way that we evaluate the small boards (this will be
-          explained shortly) and applies a weight to it, as it is preferable to win the large board over a mini-board.
-          Then each of the mini-boards are evaluated in the following way. The basis of this evaluation is that we check
-          how many possible remaining ways there are for us to win a board. For example in a board where we have played
-          one move in the centre, we have four ways we can win, two diagonals, a vertical, and a horizontal line. Now
-          imagine that our opponent plays in one of the corners. The total ways we can win is now reduced by one. The
-          score given to each mini-board is multiplied by a weighting based on where the board is (middle > corner >
-          edges) and the number of winning lines that rely on that board. All scores are then summed to give the final
-          evaluation.
+          scenario is described as follows... Firstly it checks if the game is over and if it is, returns a large
+          positive or negative score (depending on the winner). If the game is not over it means we cannot see the end
+          of the game within our search tree. So we must estimate how close we are to winning using more complex
+          methods. The function then evaluates the large TTT board the same way that we evaluate the small boards (this
+          will be explained shortly) and applies a weight to it, as it is preferable to win the large board over a
+          mini-board. Then each of the mini-boards are evaluated in the following way. The basis of this evaluation is
+          that we check how many possible remaining ways there are for us to win a board. For example in a board where
+          we have played one move in the centre, we have four ways we can win, two diagonals, a vertical, and a
+          horizontal line. Now imagine that our opponent plays in one of the corners. The total ways we can win is now
+          reduced by one. The score given to each mini-board is multiplied by a weighting based on where the board is
+          (middle > corner > edges) and the number of winning lines that rely on that board. All scores are then summed
+          to give the final evaluation.
           <br />
           <br />
           With these two components we can create an agent that is able to play considerably better than an untrained
@@ -93,10 +100,10 @@ const Page = (props) => {
           deeply into lines of play that are likely to result in good positions. For example. If a line of play involves
           capturing a mini-board it is likely to be good so we should evaluate it more deeply than the others. This
           agent only makes use of alpha-beta-pruning for optimisation. In the future I plan to implement progressive
-          deepening as well. Until then though, enjoy playing against my agent and have fun getting crushed… \
+          deepening as well. Until then though, enjoy playing against my agent and have fun getting crushed...
         </Typography>
-      </Grid>
-    </Grid>
+      </Container>
+    </Box>
   );
 };
 

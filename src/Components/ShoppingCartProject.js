@@ -1,32 +1,50 @@
-import React from "react";
-import { Grid, Container, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import { Grid, Container, Typography, Box, Fab, Tooltip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ShoppingCart from "./ShoppingCart";
 import ProductList from "./ProductList";
+import clsx from "clsx";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
-    paddingTop: theme.spacing(3)
-  }
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(3, 0, 0, 0),
+  },
+  section: {
+    marginBottom: theme.spacing(3),
+  },
+  flexGrow: {
+    flexGrow: "1",
+  },
+  displayFlex: {
+    display: "flex",
+  },
 }));
 
 const ShoppingCartProject = () => {
   const classes = useStyles();
+  const [cartOpen, setCartOpen] = useState(false);
 
   return (
-    <>
-      <ShoppingCart />
+    <Box className={classes.container}>
+      <ShoppingCart open={cartOpen} onClose={() => setCartOpen(false)} />
 
-      <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
-        <Grid item>
-          <Typography variant="h3">Online Store</Typography>
-        </Grid>
+      <Box className={clsx(classes.section, classes.displayFlex)}>
+        <Typography variant="h3" className={classes.flexGrow}>
+          Online Store
+        </Typography>
 
-        <Grid item>
-          <ProductList />
-        </Grid>
-      </Grid>
-    </>
+        <Tooltip title="View Cart">
+          <Fab onClick={() => setCartOpen(true)}>
+            <ShoppingCartIcon />
+          </Fab>
+        </Tooltip>
+      </Box>
+
+      <ProductList className={classes.section} />
+    </Box>
   );
 };
 

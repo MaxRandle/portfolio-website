@@ -1,40 +1,47 @@
 import React, { useState } from "react";
-import { Card, CardHeader, CardContent, Divider, Typography, Link, Grid } from "@material-ui/core";
+import { Card, CardHeader, CardContent, Divider, Typography, Link, Grid, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({}));
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(3, 0, 0, 0),
+  },
+  section: {
+    marginBottom: theme.spacing(3),
+  },
+}));
 
-const Page = props => {
+const Page = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={3}>
-      <Grid item>
-        <Typography variant="h3">Neural Network from scratch</Typography>
-      </Grid>
+    <Box className={classes.container}>
+      <Typography variant="h3" className={classes.section}>
+        Neural Network from scratch
+      </Typography>
 
-      <Grid item>
-        <Typography variant="h5">Description: </Typography>
+      <Typography variant="h5">Description: </Typography>
 
-        <Typography>
-          Neural networks are universal function approximators. This means that given enough high quality training data,
-          a neural network can be used to approximate ANY function.
-          <br />
-          <br />
-          <Link color="inherit" underline="always" href="https://github.com/MaxRandle/neural-network-py">
-            This github repository
-          </Link>{" "}
-          contains a neural network that I built from scratch using only NumPy matrix multiplication as a basis for
-          constructing the model. <br />
-          <br />
-          The model consists of a configurable number of densely connected layers, each one containing a configurable
-          number of nodes. Each layer can have either ReLu or sigmoid as its activation function, the output layer uses
-          softmax for classification problems. For training, the model uses gradient descent as its optimisation
-          algorithm and backpropogation to update the weight matrix at each layer.
-        </Typography>
-      </Grid>
+      <Typography className={classes.section}>
+        Neural networks are universal function approximators. This means that given enough high quality training data, a
+        neural network can be used to approximate ANY function.
+        <br />
+        <br />
+        <Link color="inherit" underline="always" href="https://github.com/MaxRandle/neural-network-py">
+          This github repository
+        </Link>{" "}
+        contains a neural network that I built from scratch using only NumPy matrix multiplication as a basis for
+        constructing the model. <br />
+        <br />
+        The model consists of a configurable number of densely connected layers, each one containing a configurable
+        number of nodes. Each layer can have either ReLu or sigmoid as its activation function, the output layer uses
+        softmax for classification problems. For training, the model uses gradient descent as its optimisation algorithm
+        and backpropogation to update the weight matrix at each layer.
+      </Typography>
 
-      <Grid item>
+      <Box className={classes.section}>
         <Typography variant="h5">Simplified training algorithm:</Typography>
         <code>.* </code> operator represents element-wise multiplication of two matricies
         <br />
@@ -56,8 +63,8 @@ const Page = props => {
         <pre>
           <code>{pseudocodeString}</code>
         </pre>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

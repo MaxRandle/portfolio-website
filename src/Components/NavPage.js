@@ -26,10 +26,10 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
-    padding: theme.spacing(2, 0, 0, 0),
+    padding: theme.spacing(3, 0, 0, 0),
   },
   section: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
   },
   logo: {
     height: 80,
@@ -68,19 +68,27 @@ const NavPage = (props) => {
 
   return (
     <Box className={classes.container}>
-      <Box className={clsx(classes.section)}>
+      <Box className={clsx(classes.disector)}>
+        <Divider className={classes.disectorDivider} />
+        <Typography className={classes.disectorText} variant="h3">
+          About
+        </Typography>
+        <Divider className={classes.disectorDivider} />
+      </Box>
+
+      <Container className={clsx(classes.section)}>
         <List>
           <ListItem button onClick={() => history.push("/skills")}>
-            <ListItemText primaryTypographyProps={{ variant: "h3" }}>Skills</ListItemText>
+            <ListItemText>Skills</ListItemText>
           </ListItem>
           <ListItem button onClick={() => history.push("/experience")}>
-            <ListItemText primaryTypographyProps={{ variant: "h3" }}>Experience</ListItemText>
+            <ListItemText>Experience</ListItemText>
           </ListItem>
           <ListItem button onClick={() => history.push("/qualifications")}>
-            <ListItemText primaryTypographyProps={{ variant: "h3" }}>Qualifications</ListItemText>
+            <ListItemText>Qualifications</ListItemText>
           </ListItem>
         </List>
-      </Box>
+      </Container>
 
       <Box className={clsx(classes.disector)}>
         <Divider className={classes.disectorDivider} />

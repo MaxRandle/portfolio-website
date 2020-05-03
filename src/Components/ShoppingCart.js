@@ -1,21 +1,20 @@
 import React, { useContext } from "react";
 import { Dialog, DialogTitle, DialogContent, Divider, Typography, Grid } from "@material-ui/core";
-import { AppStateContext } from "../contexts/AppStateContext";
 import { CartContext } from "../contexts/CartContext";
 import CartItem from "./CartItem";
 
-const ShoppingCart = () => {
-  const { appState, setAppState } = useContext(AppStateContext);
+const ShoppingCart = (props) => {
+  const { ...otherProps } = props;
   const { cart } = useContext(CartContext);
   const total = cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
 
   return (
-    <Dialog open={appState.cartOpen} onClose={() => setAppState({ ...appState, cartOpen: false })}>
+    <Dialog {...otherProps}>
       <DialogTitle>Shopping Cart</DialogTitle>
       <Divider />
       <DialogContent>
         <Grid container direction="column" justify="center" alignItems="stretch" spacing={2}>
-          {cart.map(item => (
+          {cart.map((item) => (
             <React.Fragment key={item.name}>
               <Grid item>
                 <CartItem name={item.name} price={item.price} quantity={item.quantity} />

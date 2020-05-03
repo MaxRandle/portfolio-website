@@ -1,111 +1,109 @@
 import React, { useState, useContext } from "react";
 import {
-  Grid,
   Card,
   CardHeader,
   CardContent,
-  CardMedia,
   Divider,
   Typography,
-  CardActions,
-  Fab,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
-import { BookListContext } from "../contexts/BookListContext";
-import BookForm from "./BookForm";
-import reactLogo from "../react-logo.svg";
-import uiLogo from "../ui-vector-logo.svg";
-import nodeLogo from "../nodejs-seeklogo.com.svg";
+import clsx from "clsx";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(3, 0, 0, 0),
+  },
+  section: {
+    marginBottom: theme.spacing(3),
+  },
   logo: {
-    height: "120px",
-    float: "left",
-    paddingRight: theme.spacing(2),
-    paddingBottom: theme.spacing(2)
-  }
+    height: 80,
+  },
+  center: {
+    textAlign: "center",
+  },
+  title: {
+    lineHeight: "80px",
+  },
 }));
 
-const Page = props => {
+const Page = (props) => {
   const classes = useStyles();
-  const { BookList, dispatch } = useContext(BookListContext);
 
   return (
-    <Grid container direction="column" justify="flex-start" alignItems="stretch" spacing={6}>
-      <Grid item>
-        <Typography variant="h3">Qualifications</Typography>
-      </Grid>
+    <Box className={clsx(classes.container)}>
+      <Typography variant="h3" className={classes.section}>
+        Qualifications
+      </Typography>
 
-      <Grid item>
-        <Card>
-          <CardHeader title="Bachelor of Science - Major in Computer Science - University of Auckland" />
-          <Divider />
-          <CardContent>
-            <Typography variant="h6">Notable papers:</Typography>
-            <List dense={true}>
-              <ListItem>
-                <ListItemText primary="Applied Algorithms" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Distributed Objects, Services and Programming" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Operating Systems" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Human Computer Interaction" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Fundamentals of Database Systems" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Atrificial Intelligence" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Computer Graphics and Image Processing" />
-              </ListItem>
-            </List>
-          </CardContent>
-        </Card>
-      </Grid>
-
-      <Grid item>
-        <Card>
-          <CardHeader title="UiPath" />
-          <Divider />
-          <List>
+      <Card className={classes.section}>
+        <CardHeader title="Bachelor of Science - Major in Computer Science - University of Auckland" />
+        <Divider />
+        <CardContent>
+          <Typography variant="h6">Notable papers:</Typography>
+          <List dense={true}>
             <ListItem>
-              <ListItemText
-                primary="Advanced Developer Training Course"
-                secondary={
-                  <>
-                    <Typography component="span" variant="body2">
-                      UiPath Training Academy
-                    </Typography>
-                  </>
-                }
-              />
+              <ListItemText primary="Applied Algorithms" />
             </ListItem>
             <ListItem>
-              <ListItemText
-                primary="UiPath Expert Developer Certification"
-                secondary={
-                  <>
-                    <Typography component="span" variant="body2">
-                      UiPath Certification Exam
-                    </Typography>
-                  </>
-                }
-              />
+              <ListItemText primary="Distributed Objects, Services and Programming" />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Operating Systems" />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Human Computer Interaction" />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Fundamentals of Database Systems" />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Atrificial Intelligence" />
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Computer Graphics and Image Processing" />
             </ListItem>
           </List>
-        </Card>
-      </Grid>
-    </Grid>
+        </CardContent>
+      </Card>
+
+      <Card className={classes.section}>
+        <CardHeader title="UiPath" />
+        <Divider />
+        <List>
+          <ListItem>
+            <ListItemText
+              primary="Advanced Developer Training Course"
+              secondary={
+                <>
+                  <Typography component="span" variant="body2">
+                    UiPath Training Academy
+                  </Typography>
+                </>
+              }
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText
+              primary="UiPath Expert Developer Certification"
+              secondary={
+                <>
+                  <Typography component="span" variant="body2">
+                    UiPath Certification Exam
+                  </Typography>
+                </>
+              }
+            />
+          </ListItem>
+        </List>
+      </Card>
+    </Box>
   );
 };
 

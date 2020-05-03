@@ -4,19 +4,21 @@ import { makeStyles } from "@material-ui/core/styles";
 import { GameStateContext } from "../contexts/GameStateContext";
 import { SizeContext } from "../contexts/SizeContext";
 import { getBoardEval } from "../AI.js";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
-  spacer: {
-    height: "4px",
+  flex: {
+    flexGrow: "1",
   },
 }));
 
 const ControlBar = (props) => {
-  const classes = useStyles();
+  const { className, ...otherProps } = props;
   const { gameState } = useContext(GameStateContext);
   const { squareSize } = useContext(SizeContext);
   const [loading, setLoading] = useState(true);
   const [evaluation, setEvaluation] = useState(0);
+  const classes = useStyles();
 
   const evaluateBoard = (gs) => {
     return new Promise((resolve, reject) => {
@@ -33,7 +35,6 @@ const ControlBar = (props) => {
         try {
           setLoading(true);
           const ev = await evaluateBoard(gameState);
-          // console.log(`Eval: ${ev}`);
           setEvaluation(ev);
         } catch (error) {
           console.log(error);
@@ -41,22 +42,12 @@ const ControlBar = (props) => {
           setLoading(false);
         }
       };
-
       evaluateBoardAsync();
-
-      // evaluateBoard(gameState)
-      //   .then(ev => {
-      //     console.log(`Eval: ${ev}`);
-      //     setEvaluation(ev);
-      //   })
-      //   .finally(setLoading(false));
     }
   }, [gameState]);
 
   return (
-    <Card style={{ width: squareSize * 3 + 32 }} {...props}>
-      {/* {loading && <LinearProgress />}
-      {!loading && <div className={classes.spacer} />} */}
+    <Card className={clsx(className, classes.flex)} {...otherProps}>
       <CardHeader title={`Evaluation: ${evaluation}`} />
     </Card>
   );

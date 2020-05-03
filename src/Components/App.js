@@ -10,6 +10,7 @@ import NavBar from "./NavBar";
 import ShoppingCart from "./ShoppingCart";
 import ProjectRoute from "./ProjectRoute";
 import QualificationsPage from "./QualificationsPage";
+import ExperiencePage from "./ExperiencePage";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
@@ -51,29 +52,14 @@ function App() {
           <>
             <NavBar />
             <SideMenu />
-            <Container maxWidth="sm">
+            <Container disableGutters maxWidth="sm">
               <NavPage />
             </Container>
           </>
         )}
       />
 
-      <Route
-        path="/projects"
-        component={() => (
-          <>
-            <NavBar />
-            <SideMenu />
-            <Container
-              // className={classes.pageContainer}
-              maxWidth="md"
-              disableGutters
-            >
-              <ProjectRoute />
-            </Container>
-          </>
-        )}
-      ></Route>
+      <Route path="/projects" component={() => <ProjectRoute />} />
 
       <Route
         path="/skills"
@@ -81,12 +67,25 @@ function App() {
           <>
             <NavBar />
             <SideMenu />
-            <Container className={classes.pageContainer} maxWidth="md">
+            <Container maxWidth="md">
               <SkillsPage />
             </Container>
           </>
         )}
-      ></Route>
+      />
+
+      <Route
+        path="/experience"
+        component={() => (
+          <>
+            <NavBar />
+            <SideMenu />
+            <Container maxWidth="md">
+              <ExperiencePage />
+            </Container>
+          </>
+        )}
+      />
 
       <Route
         path="/qualifications"
@@ -94,12 +93,12 @@ function App() {
           <>
             <NavBar />
             <SideMenu />
-            <Container className={classes.pageContainer} maxWidth="md">
+            <Container maxWidth="md">
               <QualificationsPage />
             </Container>
           </>
         )}
-      ></Route>
+      />
 
       <Route path="/" component={() => <Redirect to="/intro" />} exact />
     </Router>
